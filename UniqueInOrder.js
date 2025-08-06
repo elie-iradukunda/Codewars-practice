@@ -11,5 +11,5 @@ const uniqueInOrder = function(iterable) {
 
   return result;
 };
- console.LO
+ 
  console.log(uniqueInOrder('ADAAAASSDDDAASAADADGFGDSSDDDDSSSAAA'))

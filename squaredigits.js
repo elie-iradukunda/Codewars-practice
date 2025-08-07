@@ -8,5 +8,5 @@ function squareDigits(num) {
       .join('')
   );
 }
- console.log(squareDigits(233456))
+ console.log(squareDigits(233444759965473756))
   console.log(squareDigits(890))

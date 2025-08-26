@@ -13,3 +13,5 @@ function squareDigits(num) {
 console.log(squareDigits(9119)); // 811181
 console.log(squareDigits(123));  // 149
 console.log(squareDigits(0));    // 0
+
+console.log(squareDigits(7))

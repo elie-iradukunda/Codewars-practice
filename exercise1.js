@@ -206,3 +206,106 @@ proxy4.name = 'ElieJohn'; // ✅ Works fine
 
 
 
+// am learning es6 features like classes and inheritance , destracturing, spread operator , rest operator, template literals ,arrow function , modules and proxies in javascript then help me to prepare all possible practical questions for each and how to solve
+// let start by all questions for maps,sets,weakmaps and weaksets in js;
+//maps
+//1. create a MAP and add some key value pair to it
+let map=new Map();
+map.set('name','john');
+map.set('age',30);
+map.set('city','new yolk');
+console.log(map);
+// 2. get the value of a key in map
+console.log(map.get('name'));
+console.log(map.get('age'));
+console.log(map.get('city'));
+// 3. check if key is exist in map
+console.log(map.has('name'));
+console.log(map.has('country'));
+// 4 .remove a key valuye pair from map
+map.delete('age');
+console.log(map);
+// 5 . clear all key value pair from map
+map.clear();
+console.log(map);
+//6 . get the size of map
+map.set('name','john');
+map.set('age',90);
+console.log(map.size);
+//7 . iterate over map
+map.forEach(value=>{
+    console.log(value);
+});
+for(let [key,value] of map){
+    console.log(`${key}: ${value}`);
+};
+//sets
+//1. create a set and add some values to it
+let sets=new Set();
+sets.add('apple');
+sets.add('banna');
+sets.add('orange');
+console.log(sets);
+// 2. check if value is exist in set
+console.log(sets.has('apple'));
+//3. remove a value from set]
+sets.delete('banna');
+console.log(sets);
+//4. clear all values from set
+// 5. get the size of sets
+console.log(sets.size);
+// 6. iterate over sets
+sets.forEach(value=>{
+    console.log(value);
+});
+for (let value of sets){
+    console.log(value);
+}
+// weakmaps
+//1 .create a weakmaps and add some key value pair to it
+let weakmaps=new WeakMap();
+let obj1={name:"john"};
+let obj2={age:60};
+weakmaps.set(obj1,'developer');
+weakmaps.set(obj2,'doctor');
+console.log(weakmaps);
+// 2 get the value of a key in waekmaps
+console.log(weakmaps.get(obj1));
+console.log(weakmaps.get(obj2));
+// 3. check if key is exist in waekmaps
+console.log(weakmaps.has(obj1));
+console.log(weakmaps.has({name:"developer"}));
+// 4 .remove a key value pair from weakkkmaps
+weakmaps.delete(obj1);
+console.log(weakmaps);
+// 5 . clear all key value pair from waekmaps
+// weakmaos do not have clear method
+// get the size of waekmaps
+//weakmaps do not have size property
+// 7 iterate over weakmaps
+//weakmaps are not iterable
+//weaksets
+// 1 .crate a weaksets and add some values to it
+let weaksets=new WeakSet();
+let obj3={name:"kamana"};
+let obj4={age:90};
+weaksets.add(obj3);
+weaksets.add(obj4);
+console.log(weaksets);
+
+// 2 check if value is exist in weaksets
+console.log(weaksets.has(obj3));
+console.log(weaksets.has({name:"kamana"}));
+// 3. remove a value from weaksets
+weaksets.delete(obj3);
+console.log(weaksets);
+// 4 clear all values from weaksets
+// weaksets do not have clear methods
+// get the size of weaksets
+// weaksets do not have size prfoperty
+// iterate over weaksets
+// weaksets are not iterable
+// this is all about maps , sets weakmaos and weaksets in javascript
+// now i will learn about error handling in javascript
+
+

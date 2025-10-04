@@ -85,9 +85,124 @@ class Animal{
     let names="john";
     let ages=49;
     console.log(`my name is ${names} and my age is ${ages} years old`);
+
+    //arrow function
+    const multiply=(a,b)=>a*b;
+    console.log(multiply(6,9));
+    const add=(a,b)=>a+b;
+    console.log(add(6,9));
+
+
+
+
+    //classes and inhertance
+    class students{
+        constructor(name,age){
+            this.name=name;
+            this.age=age;
+
+        }
+
+    }
+    class GraduateStudent extends students{
+        constructor(name,age,degree){
+            super(name,age);
+            this.degree=degree;
+
+        }
+    run(){
+        console.log(`the name of students is ${this.name} and the age is ${this.age} years olsd and the degree is ${this.degree} `);
+
+    }
+
+    }
+    const student1=new students('alice',40);
+    console.log(student1);
+    const gradStudent1=new GraduateStudent('bob',34,'software');
+    gradStudent1.run();
+    console.log(gradStudent1);
+    console.log(student1);
+
+    //modules
+    //exporting function
+    export function greet1(name){
+        console.log(`hello , ${name} welcome to the modules in javascript`);
+
+    }
+    greet1('john');
+    //importing function
     
+    //
+    //proxies in javascript
+    let person={
+        name:'john',
+        age:30,
 
 
+    };
+    let handler={
+        get (target,property){
+            return property in target ? target[property]: `property ${property} does not exist in the object`;
+
+        }
+
+    };
+    let proxy =new Proxy(person,handler);
+    console.log(proxy.nam);
+    
+    console.log(proxy.age);
+    console.log(proxy.name);
+    // three traps in proxies
+    //get
+    //set
+    //has
+    let person1={
+        name:'john',
+        age:50,
+    };
+    let handler1={
+        get(target,property){
+            return property in target ? target[property]: `the property ${property} does not exist in our object`;
+
+
+        }
+    };
+
+    let proxy2=new Proxy(person1,handler1);
+    console.log(proxy2.nam)
+console.log(proxy2.age);
+
+//validation of forms using proxies
+ 
+let user = { name: '' };
+
+let proxy4 = new Proxy(user, {
+  set(target, property, value) {
+    if (property === 'name') {
+      if (typeof value !== 'string') {
+        console.log('❌ Name must be a string.');
+        return true; // ✅ still return true
+      }
+
+      if (value.length <= 5) {
+        console.log('❌ Name must be more than 5 characters.');
+        return true; // ✅ still return true
+      }
+
+      target[property] = value;
+      console.log(`✅ Name updated to: ${value}`);
+      return true; // ✅ successful assignment
+    }
+
+    // Fallback for other properties
+    target[property] = value;
+    return true;
+  }
+});
+
+proxy4.name = 123;        // ❌ Name must be a string.
+proxy4.name = 'Elie';     // ❌ Name must be more than 5 characters.
+proxy4.name = 'ElieJohn'; // ✅ Works fine
 
 
 

@@ -172,21 +172,37 @@ class Animal{
     console.log(proxy2.nam)
 console.log(proxy2.age);
 
-// set trap
+//validation of forms using proxies
+ 
+let user = { name: '' };
 
+let proxy4 = new Proxy(user, {
+  set(target, property, value) {
+    if (property === 'name') {
+      if (typeof value !== 'string') {
+        console.log('❌ Name must be a string.');
+        return true; // ✅ still return true
+      }
 
+      if (value.length <= 5) {
+        console.log('❌ Name must be more than 5 characters.');
+        return true; // ✅ still return true
+      }
 
+      target[property] = value;
+      console.log(`✅ Name updated to: ${value}`);
+      return true; // ✅ successful assignment
+    }
 
+    // Fallback for other properties
+    target[property] = value;
+    return true;
+  }
+});
 
-
-
-    
-
-
-
-
-
-
+proxy4.name = 123;        // ❌ Name must be a string.
+proxy4.name = 'Elie';     // ❌ Name must be more than 5 characters.
+proxy4.name = 'ElieJohn'; // ✅ Works fine
 
 
 

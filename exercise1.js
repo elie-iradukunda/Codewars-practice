@@ -307,5 +307,194 @@ console.log(weaksets);
 // weaksets are not iterable
 // this is all about maps , sets weakmaos and weaksets in javascript
 // now i will learn about error handling in javascript
+// 1. try cattch
+try {
+    let result=10/0;
+    console.log(result);
+
+    
+} catch (error) {
+    console.log(`error occured : ${error.message}`);
+
+    
+}
+finally{
+    console.log(`this block will always executes`);
+
+}
+
+//2 .throwing custom error
+function checkage(age){
+    if(age<18){
+        throw new Error(`age must be at least 18 years old`);
+
+    }
+    return `age is valid :${age}`;
+
+}
+try {
+    console.log(checkage(20));
+
+    
+} catch (error) {
+    console.log(`error occured: ${error.message}`);
+
+    
+}
+
+//3. creating custom error class
+class validationError extends Error{
+    customMessage(){
+        return `this is a custom error message`;
+
+    }
+
+}
+try {
+    throw new validationError();
+
+    
+} catch (error) {
+    console.log(error.customMessage());
+    
+}
+// this is all about eror handling in javascript;
+// now i will learn about asynchronous javascript
+// 1. callbacks
+function fetchData(callbacks){
+    setTimeout(()=>{
+        let data=`data fetched from server`;
+        callbacks(data);
+
+    },2000);
+
+}
+fetchData((data)=>{
+    console.log(data);
+    console.log(`processing data`)
+})
+// 2 . promises 
+function fetchData1(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            let data=`data fetcched from server`;
+            resolve (data);
+
+        },2000);
+
+    })
+
+}
+fetchData1()
+.then((data)=>{
+    console.log(data);
+    console.log(`processing data`);
+})
+.catch((error)=>{
+    console.log(`error occured :${error.message}`);
+
+})
+.finally(()=>{
+    console.log(`this block will always executes`);
+
+})
+
+// 3. async and await
+async function fetchData2(){
+    try {
+        let data=await fetchData2();
+        console.log(data);
+        console.log(`processing data`);
+
+        
+    } catch (error) {
+        console.log(`error occured :${error.message}`);
+
+        
+
+    }
+    finally{
+        console.log(`this block will always executes`);
+
+    }
+}
+
+//codewars practice
+// 1. write a function that takes an array of numbers and returns the sum of all the numbers in the array
+function sumArrays(arr){
+    
+    return arr.reduce((acc,curr)=>acc+curr,0);
+
+}
+console.log(sumArrays([1,2,3,4,5,6,7,78]));
+//2 write a function that takes a string and returns the string in reverse order
+function reverseString(str){
+    return str.split('').reverse().join('');
+
+}
+console.log(reverseString(`hello world this is me`));
+//3 write a function that takes an array of strings and returns the longes string in the array
+function longestSting(arr){
+    return arr.reduce((longest,current)=>{
+        return current.length>longest.length? current:longest;
+        
+    },'');
+
+}
+console.log(longestSting(['apple','banana','orange','watermelon']));
+//4 . write a function that takes a numbers and returns true if the number is prime and false otherwise
+function isPrme(num){
+    if(num<=1) return false;
+    for(let i=2; i<=Math.sqrt(num); i++){
+        if(num%i===0) return false;
+
+    }
+    return true;
+
+}
+console.log(isPrme(11));
+
+//5. write a function that takes an array of numbers and return a new array with only the even numbers
+function evenNumbers(arr){
+    return arr.filter(num=>num%2===0);
+
+}
+console.log(evenNumbers([1,2,3,4,5,6,7,7,8,8,9]));
+//6 . write a function that takes a string and returns the number of vowels in the string
+function countVowels(str){
+    let vowels='aeiouAIeOU';
+    return str.split('').filter(char=>vowels.includes(char)).length;
+
+}
+console.log(countVowels(`hello world this is meu`));
+//7 . write a function that takes an array of numbers and return the largest number in the array
+function largestNumber(arr){
+    return Math.max(...arr);
+
+}
+console.log(largestNumber([1,3,4,5,6,7,6,4,3,3,2,2,3,433,4,5,5,6,7]));
+// 8 write a function that takes a string and returns true if the string is a  palindrome and false otherwise
+function isPalindrome(str){
+    let reversed=str.split('').reverse().join('');
+
+    
+    if(str===reversed){
+        return `${str} is a palindrome`;
+    } else{
+        return `  ${str}  is not a palindrome`;
+    }
+
+}
+
+console.log(isPalindrome('madam'));
+console.log(isPalindrome('hello'));
+
+//9 . write a function that takes an array of numbers and returns the second largest number in the array
+function secondLargest(arr){
+    let uniqueArr=[...new Set(arr)];
+    uniqueArr.sort((a,b)=>b-a);
+    return uniqueArr[1];
+}
+console.log(secondLargest([1,2,3,4,5,6,7,5,14,3,2,4,5,6,7,8,82]));
 
 
